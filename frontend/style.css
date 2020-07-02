@@ -7,7 +7,7 @@
 /* Start Game form */
 .startGameForm {
   height: 100vh;
-  width: 100vw;
+  width: 50vw;
   background-color: green;
   display: flex;
   flex-direction: column;
@@ -15,12 +15,17 @@
   justify-content: center;
   margin: auto;
   color: black;
+  border: 5px solid black;
 }
 
-.startGameForm form,
-input {
+.startGameForm form {
   padding: 1rem;
   margin: 1rem;
+}
+
+.startGameForm input {
+  margin: 1rem;
+  padding: 0.4rem;
 }
 
 .startGameForm h1 {
@@ -31,4 +36,34 @@ input {
 
 #newGame {
   margin-left: 30%;
+}
+
+/* New Game form Header area */
+.startFormTitleArea {
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4rem;
+}
+/* New Game form footer area */
+.startFormFooterArea {
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 4rem;
+}
+
+/* Form Card Suit icons */
+.clubsIcon,
+.spadesIcon {
+  font-size: 4.5rem;
+}
+.diamondsIcon,
+.heartsIcon {
+  font-size: 4.5rem;
+  color: red;
 }

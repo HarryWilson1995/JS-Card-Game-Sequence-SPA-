@@ -8,7 +8,11 @@
   </head>
   <body>
     <div class="startGameForm">
-      <h1>Sequence</h1>
+      <div class="startFormTitleArea">
+        <h2 class="heartsIcon">&hearts;</h2>
+        <h1>Sequence</h1>
+        <h2 class="spadesIcon">&spades;</h2>
+      </div>
       <form action="" method="POST">
         <label for="players">Player 1: </label>
         <input type="text" name="player1" />
@@ -33,6 +37,10 @@
         <br />
         <input id="newGame" type="submit" value="Start New Game" />
       </form>
+      <div class="startFormFooterArea">
+        <h2 class="clubsIcon">&clubs;</h2>
+        <h2 class="diamondsIcon">&diamond;</h2>
+      </div>
     </div>
     <script src="sequence.js"></script>
   </body>

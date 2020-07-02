@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+/* disabling any scrolling on body */
+
+body {
+  overflow: hidden;
+}
+
 /* Start Game form */
 .startGameForm {
   height: 100vh;
@@ -31,6 +37,10 @@
 .startGameForm input {
   margin: 1rem;
   padding: 0.4rem;
+}
+.startGameForm input[type='submit'] {
+  margin: 1rem;
+  padding: 1rem;
 }
 
 .startGameForm h1 {

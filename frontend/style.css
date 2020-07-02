@@ -15,12 +15,17 @@
   justify-content: center;
   margin: auto;
   color: black;
-  border: 5px solid black;
+  border: 1rem solid black;
 }
 
 .startGameForm form {
   padding: 1rem;
   margin: 1rem;
+}
+
+.startGameForm label {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .startGameForm input {

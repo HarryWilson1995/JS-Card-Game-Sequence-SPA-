@@ -37,5 +37,9 @@ newGameForm.addEventListener('submit', (e) => {
     }),
   })
     .then((res) => console.log(res.json()))
-    .then();
+    .then((data) => createPlayerDivs(data));
 });
+
+function createPlayerDivs(data) {
+  // iterate until player count no and then create for each one
+}

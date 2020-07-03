@@ -17,5 +17,7 @@ startGameForm.addEventListener('submit', (e) => {
     body: JSON.stringify({
       name: 'Harry',
     }),
-  }).then((res) => console.log(res.json()));
+  })
+    .then((res) => console.log(res.json()))
+    .then();
 });

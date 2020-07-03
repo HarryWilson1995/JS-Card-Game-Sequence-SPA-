@@ -32,6 +32,6 @@ class GamesController < ApplicationController
     end
     binding.pry
     game.winner = nil
-    render json: game 
+    render json: game, include: [:players, :rounds]
   end
 end

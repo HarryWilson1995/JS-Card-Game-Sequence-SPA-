@@ -9,6 +9,7 @@
 body {
   overflow: hidden;
   background-color: #45b08c;
+  font-family: 'Chelsea Market', cursive;
 }
 
 /* Start Game form */
@@ -40,7 +41,11 @@ body {
   padding: 0.4rem;
 }
 .startGameForm input[type='submit'] {
-  margin: 1rem;
+  font-family: 'Chelsea Market', cursive;
+  background-color: black;
+  color: white;
+  width: 100%;
+  margin-left: -3%;
   padding: 1rem;
 }
 
@@ -49,9 +54,12 @@ body {
   margin: 1rem;
   font-size: 50px;
 }
+#player1NameFormInputField {
+  margin-left: 7%;
+}
 
-#newGame {
-  margin-left: 30%;
+#player6NameFormInputField {
+  margin-left: 5.5%;
 }
 
 /* New Game form Header area */

@@ -36,7 +36,7 @@ newGameForm.addEventListener('submit', (e) => {
       player_7: playerSeven,
     }),
   })
-    .then((res) => console.log(res.json()))
+    .then((res) => res.json())
     .then((data) => createPlayerDivs(data));
 });
 

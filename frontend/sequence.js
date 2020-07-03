@@ -2,6 +2,7 @@ const BASE_URL = 'http://localhost:3000';
 const GAMES_URL = `${BASE_URL}/games`;
 const startGameForm = document.querySelector('.startGameForm');
 const newGameForm = document.getElementById('newGameForm');
+const BODY = document.getElementsByTagName('body')[0];
 
 startGameForm.style.display = 'none';
 startGameForm.style.display = 'flex';
@@ -43,4 +44,5 @@ newGameForm.addEventListener('submit', (e) => {
 function createPlayerDivs(data) {
   // iterate until player count no and then create for each one
   console.log(data);
+  // BODY.appendChild()
 }

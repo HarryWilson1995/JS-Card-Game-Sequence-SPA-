@@ -3,6 +3,7 @@ const GAMES_URL = `${BASE_URL}/games`;
 const startGameForm = document.querySelector('.startGameForm');
 const newGameForm = document.getElementById('newGameForm');
 const gameContainer = document.querySelector('.sequenceContainer');
+const playersScreen = document.querySelector('.playersScreen');
 
 newGameForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -46,6 +47,13 @@ function removeDuplicatePlayers(data) {
 
 function createPlayerFields(arr) {
   for (let i = 0; i < arr.length; i++) {
-    // create divs
+    const playerScreen = document.createElement('div');
+    playerScreen.classList.add('playerScreen');
+    playerScreen.id = `player${arr[i].id}`;
+    const playerHand = document.createElement('div');
+    playerHand.classList.add('playersCards');
+    playerHand.id = `player${arr[i].id}Hand`;
+    playerScreen.appendChild(playerHand);
+    playersScreen.appendChild(playerScreen);
   }
 }

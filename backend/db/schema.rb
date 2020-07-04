@@ -21,8 +21,6 @@ ActiveRecord::Schema.define(version: 2020_07_03_202455) do
 
   create_table "players", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rounds", force: :cascade do |t|

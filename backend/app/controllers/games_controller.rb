@@ -180,7 +180,6 @@ class GamesController < ApplicationController
       game.player_count +=1
       game.save
     end
-    binding.pry
     game.winner = nil
     render json: game, include: [:players, :rounds]
   end

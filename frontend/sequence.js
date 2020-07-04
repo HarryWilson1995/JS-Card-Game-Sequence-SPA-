@@ -43,6 +43,10 @@ newGameForm.addEventListener('submit', (e) => {
 
 function createPlayerDivs(data) {
   // iterate until player count no and then create for each one
-  console.log(data);
+  let playersArr = [];
+  for (let i = 0; i < data.players.length; i += 3) {
+    playersArr.push(data.players[i]);
+  }
+
   // BODY.appendChild()
 }

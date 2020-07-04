@@ -2,12 +2,7 @@ const BASE_URL = 'http://localhost:3000';
 const GAMES_URL = `${BASE_URL}/games`;
 const startGameForm = document.querySelector('.startGameForm');
 const newGameForm = document.getElementById('newGameForm');
-const BODY = document.getElementsByTagName('body')[0];
-
-startGameForm.style.display = 'none';
-startGameForm.style.display = 'flex';
-
-// Next step is do a fetch to game create, with data that comes back, create all pages for players
+const gameContainer = document.querySelector('.sequenceContainer');
 
 newGameForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -38,15 +33,19 @@ newGameForm.addEventListener('submit', (e) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => createPlayerDivs(data));
+    .then((data) => removeDuplicatePlayers(data));
 });
 
-function createPlayerDivs(data) {
-  // iterate until player count no and then create for each one
+function removeDuplicatePlayers(data) {
   let playersArr = [];
   for (let i = 0; i < data.players.length; i += 3) {
     playersArr.push(data.players[i]);
   }
+  createPlayerFields(playersArr);
+}
 
-  // BODY.appendChild()
+function createPlayerFields(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    // create divs
+  }
 }

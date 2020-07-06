@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_212759) do
+ActiveRecord::Schema.define(version: 2020_07_06_213201) do
 
   create_table "cards", force: :cascade do |t|
     t.string "suit"
@@ -52,7 +52,17 @@ ActiveRecord::Schema.define(version: 2020_07_06_212759) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sequences", force: :cascade do |t|
+    t.integer "player_id", null: false
+    t.integer "round_id", null: false
+    t.boolean "met"
+    t.index ["player_id"], name: "index_sequences_on_player_id"
+    t.index ["round_id"], name: "index_sequences_on_round_id"
+  end
+
   add_foreign_key "cards", "games"
   add_foreign_key "decks", "games"
   add_foreign_key "hands", "players"
+  add_foreign_key "sequences", "players"
+  add_foreign_key "sequences", "rounds"
 end

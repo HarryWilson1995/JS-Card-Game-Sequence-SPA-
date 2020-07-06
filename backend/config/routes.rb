@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :discard_piles
   resources :sequences
   resources :hands
   resources :decks

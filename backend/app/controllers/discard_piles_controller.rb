@@ -1,0 +1,2 @@
+class DiscardPilesController < ApplicationController
+end

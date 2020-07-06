@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_213201) do
+ActiveRecord::Schema.define(version: 2020_07_06_213942) do
 
   create_table "cards", force: :cascade do |t|
     t.string "suit"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 2020_07_06_213201) do
   create_table "decks", force: :cascade do |t|
     t.integer "game_id", null: false
     t.index ["game_id"], name: "index_decks_on_game_id"
+  end
+
+  create_table "discard_piles", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.index ["game_id"], name: "index_discard_piles_on_game_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -62,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_213201) do
 
   add_foreign_key "cards", "games"
   add_foreign_key "decks", "games"
+  add_foreign_key "discard_piles", "games"
   add_foreign_key "hands", "players"
   add_foreign_key "sequences", "players"
   add_foreign_key "sequences", "rounds"

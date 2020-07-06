@@ -34,7 +34,8 @@ newGameForm.addEventListener('submit', (e) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => removeDuplicatePlayers(data));
+    .then((data) => console.log(data));
+  // .then((data) => removeDuplicatePlayers(data));
 });
 
 function removeDuplicatePlayers(data) {

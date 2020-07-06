@@ -195,11 +195,32 @@ class GamesController < ApplicationController
         card.save 
       end
     end
+    card_suits = ["H", "D", "C", "S"]
+    card_suits.each do |current_suit|
+      card_values.each do |current_value|
+        card = Card.new
+        card.suit = current_suit
+        card.value = current_value
+        card.game = game
+        card.locationable = deck
+        card.save 
+      end
+    end
+    joker_counter = 0 
+    while joker_counter < 4 do 
+      joker = Card.new 
+      joker.suit = ""
+      joker.value = "joker"
+      joker.game = game 
+      joker.locationable = deck 
+      joker.save
+      joker_counter += 1
+    end
     discard_pile = DiscardPile.new 
     discard_pile.game = game 
     discard_pile.save
     game.winner = nil
     game.save
-    render json: game, include: [:players, :rounds, :deck, :cards]
+    render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile]
   end
 end

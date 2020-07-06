@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_03_202455) do
+ActiveRecord::Schema.define(version: 2020_07_06_211121) do
+
+  create_table "cards", force: :cascade do |t|
+    t.string "suit"
+    t.string "value"
+    t.integer "game_id", null: false
+    t.string "locationable_type"
+    t.integer "locationable_id"
+    t.index ["game_id"], name: "index_cards_on_game_id"
+    t.index ["locationable_type", "locationable_id"], name: "index_cards_on_locationable_type_and_locationable_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "winner"
@@ -32,4 +42,5 @@ ActiveRecord::Schema.define(version: 2020_07_03_202455) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "cards", "games"
 end

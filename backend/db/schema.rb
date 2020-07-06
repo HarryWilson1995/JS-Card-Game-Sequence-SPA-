@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_211121) do
+ActiveRecord::Schema.define(version: 2020_07_06_211751) do
 
   create_table "cards", force: :cascade do |t|
     t.string "suit"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 2020_07_06_211121) do
     t.integer "locationable_id"
     t.index ["game_id"], name: "index_cards_on_game_id"
     t.index ["locationable_type", "locationable_id"], name: "index_cards_on_locationable_type_and_locationable_id"
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.index ["game_id"], name: "index_decks_on_game_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -43,4 +48,5 @@ ActiveRecord::Schema.define(version: 2020_07_06_211121) do
   end
 
   add_foreign_key "cards", "games"
+  add_foreign_key "decks", "games"
 end

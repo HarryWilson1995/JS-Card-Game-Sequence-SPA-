@@ -43,6 +43,13 @@ function removeDuplicatePlayers(data) {
     playersArr.push(data.players[i]);
   }
   createPlayerFields(playersArr);
+  checkStartingOrder(playersArr);
+}
+
+function checkStartingOrder(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
 }
 
 function createPlayerFields(arr) {
@@ -57,3 +64,4 @@ function createPlayerFields(arr) {
     playersScreen.appendChild(playerScreen);
   }
 }
+// https://www.w3schools.com/howto/howto_css_flip_card.asp

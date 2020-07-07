@@ -50,11 +50,61 @@ function checkStartingOrder(arr, cards) {
   let playOrder = [];
   for (let i = 0; i < arr.length; i++) {
     let random = Math.floor(Math.random() * 108);
-    playOrder.push({
-      name: arr[i]['name'],
-      id: arr[i]['id'],
-      card: cards[random]['value'],
-    });
+    if (
+      cards[random]['value'] !== 'J' &&
+      cards[random]['value'] !== 'Q' &&
+      cards[random]['value'] !== 'K' &&
+      cards[random]['value'] !== 'A' &&
+      cards[random]['value'] !== 'joker'
+    ) {
+      let number = parseInt(cards[random]['value']);
+      playOrder.push({
+        name: arr[i]['name'],
+        id: arr[i]['id'],
+        card: cards[random]['value'],
+        number: number,
+      });
+    } else if (cards[random]['value'] === 'J') {
+      let number = 11;
+      playOrder.push({
+        name: arr[i]['name'],
+        id: arr[i]['id'],
+        card: cards[random]['value'],
+        number: number,
+      });
+    } else if (cards[random]['value'] === 'Q') {
+      let number = 12;
+      playOrder.push({
+        name: arr[i]['name'],
+        id: arr[i]['id'],
+        card: cards[random]['value'],
+        number: number,
+      });
+    } else if (cards[random]['value'] === 'K') {
+      let number = 13;
+      playOrder.push({
+        name: arr[i]['name'],
+        id: arr[i]['id'],
+        card: cards[random]['value'],
+        number: number,
+      });
+    } else if (cards[random]['value'] === 'A') {
+      let number = 14;
+      playOrder.push({
+        name: arr[i]['name'],
+        id: arr[i]['id'],
+        card: cards[random]['value'],
+        number: number,
+      });
+    } else {
+      let number = 15;
+      playOrder.push({
+        name: arr[i]['name'],
+        id: arr[i]['id'],
+        card: cards[random]['value'],
+        number: number,
+      });
+    }
   }
   console.log(playOrder);
 }

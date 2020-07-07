@@ -186,16 +186,19 @@ body {
   height: 25vh;
   width: 100%;
   background: green;
+  border: 1px solid black;
 }
 
 .sequenceDropArea {
   width: 100%;
   height: 40vh;
-  background: yellow;
+  background: green;
+  border: 1px solid black;
 }
 
 .playerScreen {
   width: 100%;
   height: 35vh;
-  background: red;
+  background: green;
+  border: 1px solid black;
 }

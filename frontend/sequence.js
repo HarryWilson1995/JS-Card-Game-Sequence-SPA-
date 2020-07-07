@@ -23,7 +23,6 @@ newGameForm.addEventListener('submit', (e) => {
 
   fetch(GAMES_URL, {
     method: 'POST',
-    credentials: 'same-origin',
     headers: {
       'Content-type': 'application/json',
     },

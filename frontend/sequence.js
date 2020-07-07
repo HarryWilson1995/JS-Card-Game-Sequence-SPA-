@@ -4,6 +4,8 @@ const startGameForm = document.querySelector('.startGameForm');
 const newGameForm = document.getElementById('newGameForm');
 const gameContainer = document.querySelector('.sequenceContainer');
 const playersScreen = document.querySelector('.playersScreen');
+const orderReveal = document.querySelector('.orderReveal');
+const cardReveal = document.querySelector('.cardReveal');
 
 newGameForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -63,6 +65,7 @@ function checkStartingOrder(arr, cards) {
         id: arr[i]['id'],
         card: cards[random]['value'],
         number: number,
+        suit: cards[random]['suit'],
       });
     } else if (cards[random]['value'] === 'J') {
       let number = 11;
@@ -71,6 +74,7 @@ function checkStartingOrder(arr, cards) {
         id: arr[i]['id'],
         card: cards[random]['value'],
         number: number,
+        suit: cards[random]['suit'],
       });
     } else if (cards[random]['value'] === 'Q') {
       let number = 12;
@@ -79,6 +83,7 @@ function checkStartingOrder(arr, cards) {
         id: arr[i]['id'],
         card: cards[random]['value'],
         number: number,
+        suit: cards[random]['suit'],
       });
     } else if (cards[random]['value'] === 'K') {
       let number = 13;
@@ -87,6 +92,7 @@ function checkStartingOrder(arr, cards) {
         id: arr[i]['id'],
         card: cards[random]['value'],
         number: number,
+        suit: cards[random]['suit'],
       });
     } else if (cards[random]['value'] === 'A') {
       let number = 14;
@@ -95,6 +101,7 @@ function checkStartingOrder(arr, cards) {
         id: arr[i]['id'],
         card: cards[random]['value'],
         number: number,
+        suit: cards[random]['suit'],
       });
     } else {
       let number = 15;
@@ -103,11 +110,30 @@ function checkStartingOrder(arr, cards) {
         id: arr[i]['id'],
         card: cards[random]['value'],
         number: number,
+        suit: cards[random]['suit'],
       });
     }
   }
   let sortedPlayOrder = playOrder.sort((a, b) => b.number - a.number);
-  console.log(sortedPlayOrder);
+  showPlayerOrder(sortedPlayOrder);
+}
+
+function showPlayerOrder(order) {
+  startGameForm.style.display = 'none';
+  orderReveal.style.display = 'flex';
+  order.forEach(function (player) {
+    let div = document.createElement('div');
+    div.classList.add('cardFlip');
+    let header = document.createElement('h2');
+    let card = document.createElement('img');
+    header.innerText = player.name;
+    card.height = '200';
+    card.width = '100';
+    card.src = `./images/${player.card}${player.suit}.png`;
+    div.appendChild(header);
+    div.appendChild(card);
+    cardReveal.appendChild(div);
+  });
 }
 
 function createPlayerFields(arr) {

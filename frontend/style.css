@@ -91,3 +91,27 @@ body {
   font-size: 4.5rem;
   color: red;
 }
+
+/* Player order */
+.orderReveal {
+  width: 100vw;
+  height: 100vw;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.cardReveal {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardFlip {
+  width: 200px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

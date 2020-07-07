@@ -6,6 +6,8 @@ const gameContainer = document.querySelector('.sequenceContainer');
 const playersScreen = document.querySelector('.playersScreen');
 const orderReveal = document.querySelector('.orderReveal');
 const cardReveal = document.querySelector('.cardReveal');
+const deckArea = document.querySelector('.deckArea');
+const sequenceDropArea = document.querySelector('.sequenceDropArea');
 
 newGameForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -152,6 +154,7 @@ function showPlayerOrder(order) {
     div.appendChild(flipCard);
     cardReveal.appendChild(div);
   });
+  setTimeout(startRoundOne, 7000, order);
 }
 
 function createPlayerFields(arr) {
@@ -165,4 +168,11 @@ function createPlayerFields(arr) {
     playerScreen.appendChild(playerHand);
     playersScreen.appendChild(playerScreen);
   }
+}
+
+function startRoundOne(order) {
+  console.log(order);
+  orderReveal.style.display = 'none';
+  deckArea;
+  sequenceDropArea;
 }

@@ -106,7 +106,8 @@ function checkStartingOrder(arr, cards) {
       });
     }
   }
-  console.log(playOrder);
+  let sortedPlayOrder = playOrder.sort((a, b) => b.number - a.number);
+  console.log(sortedPlayOrder);
 }
 
 function createPlayerFields(arr) {

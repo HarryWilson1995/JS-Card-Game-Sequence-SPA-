@@ -34,8 +34,7 @@ newGameForm.addEventListener('submit', (e) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
-  // .then((data) => removeDuplicatePlayers(data));
+    .then((data) => removeDuplicatePlayers(data));
 });
 
 function removeDuplicatePlayers(data) {
@@ -44,13 +43,20 @@ function removeDuplicatePlayers(data) {
     playersArr.push(data.players[i]);
   }
   createPlayerFields(playersArr);
-  checkStartingOrder(playersArr);
+  checkStartingOrder(playersArr, data.cards);
 }
 
-function checkStartingOrder(arr) {
+function checkStartingOrder(arr, cards) {
+  let playOrder = [];
   for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
+    let random = Math.floor(Math.random() * 108);
+    playOrder.push({
+      name: arr[i]['name'],
+      id: arr[i]['id'],
+      card: cards[random]['value'],
+    });
   }
+  console.log(playOrder);
 }
 
 function createPlayerFields(arr) {

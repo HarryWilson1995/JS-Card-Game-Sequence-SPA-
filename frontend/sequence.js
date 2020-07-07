@@ -36,8 +36,7 @@ newGameForm.addEventListener('submit', (e) => {
     }),
   })
     .then((res) => res.json())
-    .then((data) => console.log(data));
-  // .then((data) => removeDuplicatePlayers(data));
+    .then((data) => removeDuplicatePlayers(data));
 });
 
 function removeDuplicatePlayers(data) {
@@ -137,12 +136,12 @@ function showPlayerOrder(order) {
     cardBack.classList.add('flipCardBack');
     let card = document.createElement('img');
     header.innerText = player.name;
-    card.height = '200';
-    card.width = '100';
+    card.height = '240';
+    card.width = '157';
     card.src = './images/blue_back.png';
     let backOfCard = document.createElement('img');
-    backOfCard.height = '200';
-    backOfCard.width = '100';
+    backOfCard.height = '240';
+    backOfCard.width = '157';
     backOfCard.src = `./images/${player.card}${player.suit}.png`;
     div.appendChild(header);
     cardBack.appendChild(backOfCard);

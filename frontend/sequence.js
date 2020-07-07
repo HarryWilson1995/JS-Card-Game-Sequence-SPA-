@@ -125,13 +125,31 @@ function showPlayerOrder(order) {
     let div = document.createElement('div');
     div.classList.add('cardFlip');
     let header = document.createElement('h2');
+    header.classList.add('playerName');
+    let flipCard = document.createElement('div');
+    flipCard.classList.add('flipCard');
+    let innerCard = document.createElement('div');
+    innerCard.classList.add('flipCardInner');
+    let cardFront = document.createElement('div');
+    cardFront.classList.add('flipCardFront');
+    let cardBack = document.createElement('div');
+    cardBack.classList.add('flipCardBack');
     let card = document.createElement('img');
     header.innerText = player.name;
     card.height = '200';
     card.width = '100';
-    card.src = `./images/${player.card}${player.suit}.png`;
+    card.src = './images/blue_back.png';
+    let backOfCard = document.createElement('img');
+    backOfCard.height = '200';
+    backOfCard.width = '100';
+    backOfCard.src = `./images/${player.card}${player.suit}.png`;
     div.appendChild(header);
-    div.appendChild(card);
+    cardBack.appendChild(backOfCard);
+    cardFront.appendChild(card);
+    innerCard.appendChild(cardFront);
+    innerCard.appendChild(cardBack);
+    flipCard.appendChild(innerCard);
+    div.appendChild(flipCard);
     cardReveal.appendChild(div);
   });
 }
@@ -148,4 +166,3 @@ function createPlayerFields(arr) {
     playersScreen.appendChild(playerScreen);
   }
 }
-// https://www.w3schools.com/howto/howto_css_flip_card.asp

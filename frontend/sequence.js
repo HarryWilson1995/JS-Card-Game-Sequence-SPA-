@@ -173,6 +173,13 @@ function createPlayerFields(arr) {
 function startRoundOne(order) {
   console.log(order);
   orderReveal.style.display = 'none';
-  deckArea;
-  sequenceDropArea;
+  playersScreen.style.display = 'flex';
+  const playerAreas = document.querySelectorAll('.playerScreen');
+  playerAreas.forEach(function (area) {
+    if (area.id !== `player${order[0]['id'].toString()}`) {
+      let div = document.getElementById(`${area.id}`);
+      div.style.display = 'none';
+    }
+  });
+  console.log(playerAreas);
 }

@@ -28,7 +28,31 @@ class ApplicationController < ActionController::API
     end
   end
 
-  # def createCards
+  def createCards(game, deck)
+    card_values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", 'J', 'Q', 'K', 'A']
+    card_suits = ["H", "D", "C", "S"]
+    card_suits.each do |current_suit|
+      card_values.each do |current_value|
+        card = Card.new
+        card.suit = current_suit
+        card.value = current_value
+        card.game = game
+        card.locationable = deck
+        card.save 
+      end
+    end
+  end
 
-  # end
+  def createJokers(game, deck)
+    joker_counter = 0 
+    while joker_counter < 4 do 
+      joker = Card.new 
+      joker.suit = ""
+      joker.value = "joker"
+      joker.game = game 
+      joker.locationable = deck 
+      joker.save
+      joker_counter += 1
+    end
+  end
 end

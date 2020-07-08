@@ -46,10 +46,10 @@ function removeDuplicatePlayers(data) {
     playersArr.push(data.players[i]);
   }
   createPlayerFields(playersArr);
-  checkStartingOrder(playersArr, data.cards);
+  checkStartingOrder(playersArr, data.cards, data);
 }
 
-function checkStartingOrder(arr, cards) {
+function checkStartingOrder(arr, cards, data) {
   let playOrder = [];
   for (let i = 0; i < arr.length; i++) {
     let random = Math.floor(Math.random() * 108);
@@ -116,10 +116,10 @@ function checkStartingOrder(arr, cards) {
     }
   }
   let sortedPlayOrder = playOrder.sort((a, b) => b.number - a.number);
-  showPlayerOrder(sortedPlayOrder);
+  showPlayerOrder(sortedPlayOrder, data);
 }
 
-function showPlayerOrder(order) {
+function showPlayerOrder(order, data) {
   startGameForm.style.display = 'none';
   orderReveal.style.display = 'flex';
   order.forEach(function (player) {
@@ -153,7 +153,7 @@ function showPlayerOrder(order) {
     div.appendChild(flipCard);
     cardReveal.appendChild(div);
   });
-  setTimeout(startRoundOne, 7000, order);
+  setTimeout(startRoundOne, 7000, order, data);
 }
 
 function createPlayerFields(arr) {
@@ -169,8 +169,7 @@ function createPlayerFields(arr) {
   }
 }
 
-function startRoundOne(order) {
-  console.log(order);
+function startRoundOne(order, data) {
   orderReveal.style.display = 'none';
   playersScreen.style.display = 'flex';
   const playerAreas = document.querySelectorAll('.playerScreen');
@@ -181,4 +180,12 @@ function startRoundOne(order) {
     }
   });
   console.log(playerAreas);
+  // fetch cards
+
+  //   const nums = new Set();
+  // while(nums.size !== 10) {
+  //   nums.add(Math.floor(Math.random() * 108));
+  // }
+
+  // console.log([...nums]);
 }

@@ -221,6 +221,7 @@ function fetchCards(obj) {
   })
     .then((res) => res.json())
     .then((deck) => renderDeck(deck));
+  renderGameInfo(obj);
 }
 
 function renderHands(obj) {
@@ -247,5 +248,29 @@ function renderDeck(obj) {
     card.src = `./images/${c.value}${c.suit}.png`;
     card.classList.add('deckCard');
     deck.appendChild(card);
+  });
+}
+
+function renderGameInfo(obj) {
+  console.log(obj);
+  const scoresList = document.querySelector('.scores');
+  const roundInfo = document.querySelector('.roundInfo');
+  roundInfo.innerText = 'Round: 1';
+  const currentTurnInfo = document.querySelector('.currentTurn');
+  for (let i = 0; i < obj.players.length; i += 3) {
+    let listItem = document.createElement('li');
+    listItem.innerText = `${obj.players[i]['name']} - 0`;
+    scoresList.appendChild(listItem);
+  }
+  const playerScreens = document.querySelectorAll('.playerScreen');
+  playerScreens.forEach((screen) => {
+    if (screen.style.display !== 'none') {
+      const id = screen.id;
+      for (let i = 0; i < obj.players.length; i += 3) {
+        if (`player${obj.players[i]['id']}` === id) {
+          currentTurnInfo.innerText = `Current Turn: ${obj.players[i]['name']}`;
+        }
+      }
+    }
   });
 }

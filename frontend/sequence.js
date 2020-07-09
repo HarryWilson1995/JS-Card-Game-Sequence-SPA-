@@ -180,7 +180,7 @@ function startRoundOne(order, data) {
     }
   });
   console.log(playerAreas);
-  // fetch cards
+  // Need to patch cards ... have access with data here to whole game
 
   //   const nums = new Set();
   // while(nums.size !== 10) {

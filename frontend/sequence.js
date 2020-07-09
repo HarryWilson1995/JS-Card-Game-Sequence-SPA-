@@ -246,7 +246,14 @@ function renderHands(obj) {
 }
 
 function renderDeck(obj) {
-  // shuffle first!
+  for (let i = 0; i < 1000; i++) {
+    let location1 = Math.floor(Math.random() * obj.cards.length);
+    let location2 = Math.floor(Math.random() * obj.cards.length);
+    let tmp = obj.cards[location1];
+
+    obj.cards[location1] = obj.cards[location2];
+    obj.cards[location2] = tmp;
+  }
   let deck = document.querySelector('.deck');
   obj.cards.forEach((c) => {
     let card = document.createElement('img');

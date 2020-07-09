@@ -213,7 +213,14 @@ function fetchCards(obj) {
       .then((res) => res.json())
       .then((hands) => renderHands(hands));
   }
-  // Another fetch for deck
+
+  fetch(`${BASE_URL}/decks/${obj.deck['id']}`, {
+    headers: {
+      'Content-type': 'application/json',
+    },
+  })
+    .then((res) => res.json())
+    .then((deck) => renderDeck(deck));
 }
 
 function renderHands(obj) {
@@ -227,5 +234,18 @@ function renderHands(obj) {
     card.classList.add('handCard');
     card.draggable = true;
     handDiv.appendChild(card);
+  });
+}
+
+function renderDeck(obj) {
+  let deck = document.querySelector('.deck');
+  obj.cards.forEach((c) => {
+    let card = document.createElement('img');
+    card.height = '240';
+    card.width = '157';
+    card.id = c.id;
+    card.src = `./images/${c.value}${c.suit}.png`;
+    card.classList.add('deckCard');
+    deck.appendChild(card);
   });
 }

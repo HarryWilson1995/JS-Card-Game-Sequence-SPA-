@@ -216,7 +216,8 @@ body {
 }
 
 .deck {
-  margin-right: 1.5rem;
+  margin-right: 11rem;
+  position: relative;
 }
 
 .dropZone {
@@ -264,4 +265,13 @@ body {
 .playersCards {
   display: flex;
   justify-content: center;
+}
+
+.deckCardTop {
+  position: absolute;
+  z-index: 1;
+}
+
+.deckCard {
+  position: absolute;
 }

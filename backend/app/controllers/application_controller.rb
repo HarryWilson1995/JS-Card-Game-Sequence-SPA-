@@ -23,6 +23,9 @@ class ApplicationController < ActionController::API
       round3.player_id = player.id
       round3.game_id = game.id
       round3.save
+      hand = Hand.new 
+      hand.player = player
+      hand.save
       game.player_count +=1
       game.save
     end

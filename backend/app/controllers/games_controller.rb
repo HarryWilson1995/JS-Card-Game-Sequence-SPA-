@@ -24,6 +24,12 @@ class GamesController < ApplicationController
   end
 
   def update 
+    player_count = params["cardNums"].length
+    player = Player.find(params["cardNums"][0]["id"])
+    player.hand
+    game = Game.find(params["game"])
+    game.cards
+    game.player_count
     binding.pry
   end
 end

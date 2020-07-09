@@ -197,6 +197,7 @@ function startRoundOne(order, data) {
     },
     body: JSON.stringify({
       cardNums: playerAndNums,
+      game: data.id,
     }),
   });
 

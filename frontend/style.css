@@ -219,6 +219,12 @@ body {
   margin-right: 1.5rem;
 }
 
+.dropZone {
+  height: 240px;
+  width: 157px;
+  border: 1px dotted black;
+}
+
 .info {
   display: flex;
   flex-direction: column;

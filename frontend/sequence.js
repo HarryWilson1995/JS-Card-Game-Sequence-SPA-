@@ -169,7 +169,7 @@ function createPlayerFields(arr) {
   }
 }
 
-function startRoundOne(order, data) {
+function startRoundOne(order, originalData) {
   orderReveal.style.display = 'none';
   playersScreen.style.display = 'flex';
   const playerAreas = document.querySelectorAll('.playerScreen');
@@ -184,24 +184,48 @@ function startRoundOne(order, data) {
     nums.add(Math.floor(Math.random() * 108));
   }
   let randomCardIndexes = Array.from(nums);
-  console.log(randomCardIndexes);
   let playerAndNums = [];
   order.forEach((player) => {
     let playersCardNums = randomCardIndexes.splice(-10);
     playerAndNums.push({ id: player.id, nums: playersCardNums });
   });
-  fetch(`${GAMES_URL}/${data.id}`, {
+  fetch(`${GAMES_URL}/${originalData.id}`, {
     method: 'PATCH',
     headers: {
       'Content-type': 'application/json',
     },
     body: JSON.stringify({
       cardNums: playerAndNums,
-      game: data.id,
+      game: originalData.id,
     }),
+  })
+    .then((res) => res.json())
+    .then((data) => fetchCards(data));
+}
+
+function fetchCards(obj) {
+  for (let i = 0; i < obj.hands.length; i += 3) {
+    fetch(`${BASE_URL}/hands/${obj.hands[i]['id']}`, {
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((hands) => renderHands(hands));
+  }
+  // Another fetch for deck
+}
+
+function renderHands(obj) {
+  let handDiv = document.getElementById(`player${obj.player_id}Hand`);
+  obj.cards.forEach((c) => {
+    let card = document.createElement('img');
+    card.height = '240';
+    card.width = '157';
+    card.id = c.id;
+    card.src = `./images/${c.value}${c.suit}.png`;
+    card.classList.add('handCard');
+    card.draggable = true;
+    handDiv.appendChild(card);
   });
-
-  // Need to patch cards ... have access with data here to whole game
-
-  // Iterate through returned cards and append based on locationable type and id by grabbing divs with those ids
 }

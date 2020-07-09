@@ -20,16 +20,20 @@ class GamesController < ApplicationController
     discard_pile.save
     game.winner = nil
     game.save
-    render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile]
+    render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile, :hands]
   end
 
   def update 
-    player_count = params["cardNums"].length
-    player = Player.find(params["cardNums"][0]["id"])
-    player.hand
     game = Game.find(params["game"])
-    game.cards
-    game.player_count
-    binding.pry
+    params["cardNums"].each do |p|
+      player = Player.find(p["id"])
+      hand = player.hand
+      p["nums"].each do |n|
+        game.cards[n].locationable = hand
+        game.cards[n].save
+      end
+    end 
+
+    render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile, :hands]
   end
 end

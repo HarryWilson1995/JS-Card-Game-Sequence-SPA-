@@ -255,3 +255,13 @@ body {
 .leaderboard ul {
   list-style: none;
 }
+
+/* Players Hand */
+.handCard {
+  margin-left: -4rem;
+}
+
+.playersCards {
+  display: flex;
+  justify-content: center;
+}

@@ -179,13 +179,28 @@ function startRoundOne(order, data) {
       div.style.display = 'none';
     }
   });
-  console.log(playerAreas);
+  const nums = new Set();
+  while (nums.size !== order.length * 10) {
+    nums.add(Math.floor(Math.random() * 108));
+  }
+  let randomCardIndexes = Array.from(nums);
+  console.log(randomCardIndexes);
+  let playerAndNums = [];
+  order.forEach((player) => {
+    let playersCardNums = randomCardIndexes.splice(-10);
+    playerAndNums.push({ id: player.id, nums: playersCardNums });
+  });
+  fetch(`${GAMES_URL}/${data.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      cardNums: playerAndNums,
+    }),
+  });
+
   // Need to patch cards ... have access with data here to whole game
 
-  //   const nums = new Set();
-  // while(nums.size !== 10) {
-  //   nums.add(Math.floor(Math.random() * 108));
-  // }
-
-  // console.log([...nums]);
+  // Iterate through returned cards and append based on locationable type and id by grabbing divs with those ids
 }

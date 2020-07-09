@@ -22,4 +22,8 @@ class GamesController < ApplicationController
     game.save
     render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile]
   end
+
+  def update 
+    binding.pry
+  end
 end

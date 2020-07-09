@@ -205,8 +205,10 @@ body {
 .deckArea {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  position: relative;
+  font-size: 1.2rem;
 }
 
 .deckAndDrop {
@@ -221,4 +223,27 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-right: 3rem;
+}
+
+.info > * {
+  margin: 0.5rem;
+}
+
+.gameRules {
+  background-color: black;
+  color: white;
+  width: 200px;
+  padding: 1rem;
+  position: absolute;
+  top: 10%;
+  right: 5%;
+}
+
+.leaderboard {
+  margin-left: 3rem;
+}
+
+.leaderboard ul {
+  list-style: none;
 }

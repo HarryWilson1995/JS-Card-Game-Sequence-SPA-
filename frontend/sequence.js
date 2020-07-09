@@ -225,7 +225,7 @@ function fetchCards(obj) {
 }
 
 function renderHands(obj) {
-  let handDiv = document.getElementById(`player${obj.player_id}Hand`);
+  let handDiv = document.getElementById(`player${obj.player_id}`);
   obj.cards.forEach((c) => {
     let card = document.createElement('img');
     card.height = '240';
@@ -233,12 +233,20 @@ function renderHands(obj) {
     card.id = c.id;
     card.src = `./images/${c.value}${c.suit}.png`;
     card.classList.add('handCard');
+    card.onmouseenter = function (e) {
+      e.target.style.marginBottom = '5rem';
+    };
+    card.onmouseleave = function (e) {
+      e.target.style.marginBottom = '0';
+    };
+
     card.draggable = true;
     handDiv.appendChild(card);
   });
 }
 
 function renderDeck(obj) {
+  // shuffle first!
   let deck = document.querySelector('.deck');
   obj.cards.forEach((c) => {
     let card = document.createElement('img');

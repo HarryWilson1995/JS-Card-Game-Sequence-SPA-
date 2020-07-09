@@ -190,13 +190,13 @@ body {
 
 .sequenceDropArea {
   width: 100%;
-  height: 40vh;
+  height: 35vh;
   background: green;
 }
 
 .playerScreen {
   width: 100%;
-  height: 30vh;
+  height: 35vh;
   background: green;
   border: 1px solid black;
 }
@@ -256,6 +256,14 @@ body {
 /* Players Hand */
 .handCard {
   margin-left: -4rem;
+  margin-bottom: 0;
+}
+
+.playerScreen {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .playersCards {

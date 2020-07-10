@@ -272,11 +272,6 @@ body {
   justify-content: center;
 }
 
-.playersCards {
-  display: flex;
-  justify-content: center;
-}
-
 .deckCardTop {
   position: absolute;
   z-index: 1;

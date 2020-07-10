@@ -11,12 +11,22 @@ const sequenceDropArea = document.querySelector('.sequenceDropArea');
 const dropZone = document.querySelector('.dropZone');
 const deck = document.querySelector('.deck');
 
+class Game {
+  constructor(playerCount, playOrder) {
+    this.playerCount = playerCount;
+    this.playOrder = playOrder;
+  }
+}
+
+// const game = new Game(sortedPlayOrder.length, sortedPlayOrder);
+
 // Drop zone drag over event
 dropZone.addEventListener('dragover', (e) => {
   e.preventDefault();
   const draggable = document.querySelector('.dragging');
   draggable.classList.remove('handCard');
   dropZone.appendChild(draggable);
+  console.log(game);
 });
 
 // Draw Card event
@@ -24,7 +34,10 @@ deck.addEventListener('click', () => {
   const drawnCard = deck.children[1];
   const playerScreens = document.querySelectorAll('.playerScreen');
   playerScreens.forEach((screen) => {
-    if (screen.style.display !== 'none') {
+    if (
+      screen.style.display !== 'none' &&
+      screen.children[0].childElementCount <= 10
+    ) {
       drawnCard.classList.add('handCard');
       drawnCard.classList.remove('deckCard');
       drawnCard.onmouseenter = function (e) {
@@ -352,7 +365,7 @@ function renderGameInfo(obj) {
       const id = screen.id;
       for (let i = 0; i < obj.players.length; i += 3) {
         if (`player${obj.players[i]['id']}` === id) {
-          currentTurnInfo.innerText = `Current Turn: ${obj.players[i]['name']}`;
+          currentTurnInfo.innerText = `Current Player: ${obj.players[i]['name']}`;
         }
       }
     }

@@ -173,9 +173,39 @@ function createPlayerFields(arr) {
     const playerHand = document.createElement('div');
     playerHand.classList.add('playersCards');
     playerHand.id = `player${arr[i].id}Hand`;
+    playerHand.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      const afterElement = getDragAfterElement(playerHand, e.clientX);
+      const draggable = document.querySelector('.dragging');
+      if (afterElement == null) {
+        playerHand.appendChild(draggable);
+      } else {
+        playerHand.insertBefore(draggable, afterElement);
+      }
+    });
     playerScreen.appendChild(playerHand);
     playersScreen.appendChild(playerScreen);
   }
+}
+
+function getDragAfterElement(container, x) {
+  const draggableElements = [
+    ...container.querySelectorAll('.handCard:not(.dragging)'),
+  ];
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = x - box.left - box.width / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    {
+      offset: Number.NEGATIVE_INFINITY,
+    }
+  ).element;
 }
 
 function startRoundOne(order, originalData) {
@@ -234,7 +264,7 @@ function fetchCards(obj) {
 }
 
 function renderHands(obj) {
-  let handDiv = document.getElementById(`player${obj.player_id}`);
+  let handDiv = document.getElementById(`player${obj.player_id}Hand`);
   obj.cards.forEach((c) => {
     let card = document.createElement('img');
     card.height = '240';

@@ -224,6 +224,11 @@ body {
   height: 240px;
   width: 157px;
   border: 1px dotted black;
+  position: relative;
+}
+
+.dropZone > * {
+  position: absolute;
 }
 
 .info {

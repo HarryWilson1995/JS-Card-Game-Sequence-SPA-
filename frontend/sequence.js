@@ -8,6 +8,15 @@ const orderReveal = document.querySelector('.orderReveal');
 const cardReveal = document.querySelector('.cardReveal');
 const deckArea = document.querySelector('.deckArea');
 const sequenceDropArea = document.querySelector('.sequenceDropArea');
+const dropZone = document.querySelector('.dropZone');
+
+// Drop zone drag over event
+dropZone.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  const draggable = document.querySelector('.dragging');
+  draggable.classList.remove('handCard');
+  dropZone.appendChild(draggable);
+});
 
 newGameForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -233,14 +242,19 @@ function renderHands(obj) {
     card.id = c.id;
     card.src = `./images/${c.value}${c.suit}.png`;
     card.classList.add('handCard');
+    card.draggable = true;
     card.onmouseenter = function (e) {
       e.target.style.marginBottom = '5rem';
     };
     card.onmouseleave = function (e) {
       e.target.style.marginBottom = '0';
     };
-
-    card.draggable = true;
+    card.addEventListener('dragstart', () => {
+      card.classList.add('dragging');
+    });
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+    });
     handDiv.appendChild(card);
   });
 }

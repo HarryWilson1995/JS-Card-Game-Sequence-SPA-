@@ -109,7 +109,7 @@ class Game {
       playerHand.id = `player${arr[i].id}Hand`;
       playerHand.addEventListener('dragover', (e) => {
         e.preventDefault();
-        const afterElement = getDragAfterElement(playerHand, e.clientX);
+        const afterElement = Hand.getDragAfterElement(playerHand, e.clientX);
         const draggable = document.querySelector('.dragging');
         if (afterElement == null) {
           playerHand.appendChild(draggable);
@@ -157,5 +157,27 @@ class Game {
     });
     let r = new Round();
     setTimeout(r.startRound, 7000, order, data);
+  }
+  static renderGameInfo(obj) {
+    const scoresList = document.querySelector('.scores');
+    const roundInfo = document.querySelector('.roundInfo');
+    roundInfo.innerText = 'Round: 1';
+    const currentTurnInfo = document.querySelector('.currentTurn');
+    for (let i = 0; i < obj.players.length; i += 3) {
+      let listItem = document.createElement('li');
+      listItem.innerText = `${obj.players[i]['name']} - 0`;
+      scoresList.appendChild(listItem);
+    }
+    const playerScreens = document.querySelectorAll('.playerScreen');
+    playerScreens.forEach((screen) => {
+      if (screen.style.display !== 'none') {
+        const id = screen.id;
+        for (let i = 0; i < obj.players.length; i += 3) {
+          if (`player${obj.players[i]['id']}` === id) {
+            currentTurnInfo.innerText = `Current Player: ${obj.players[i]['name']}`;
+          }
+        }
+      }
+    });
   }
 }

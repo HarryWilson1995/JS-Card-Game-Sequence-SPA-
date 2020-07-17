@@ -11,9 +11,31 @@ const sequenceDropArea = document.querySelector('.sequenceDropArea');
 const dropZone = document.querySelector('.dropZone');
 const deck = document.querySelector('.deck');
 
-const g = new Game();
+newGameForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const playerOne = document.getElementById('player1NameFormInputField').value;
+  const playerTwo = document.getElementById('player2NameFormInputField').value;
+  const playerThree = document.getElementById('player3NameFormInputField')
+    .value;
+  const playerFour = document.getElementById('player4NameFormInputField').value;
+  const playerFive = document.getElementById('player5NameFormInputField').value;
+  const playerSix = document.getElementById('player6NameFormInputField').value;
+  const playerSeven = document.getElementById('player7NameFormInputField')
+    .value;
+  let body = {
+    player_1: playerOne,
+    player_2: playerTwo,
+    player_3: playerThree,
+    player_4: playerFour,
+    player_5: playerFive,
+    player_6: playerSix,
+    player_7: playerSeven,
+  };
+  const g = new Game();
+  g.createGame(body);
+});
 
-g.createGame();
+// After this point needs refactoring
 
 // Drop zone drag over event
 dropZone.addEventListener('dragover', (e) => {
@@ -70,40 +92,6 @@ function getDragAfterElement(container, x) {
       offset: Number.NEGATIVE_INFINITY,
     }
   ).element;
-}
-
-function startRoundOne(order, originalData) {
-  orderReveal.style.display = 'none';
-  playersScreen.style.display = 'flex';
-  const playerAreas = document.querySelectorAll('.playerScreen');
-  playerAreas.forEach(function (area) {
-    if (area.id !== `player${order[0]['id'].toString()}`) {
-      let div = document.getElementById(`${area.id}`);
-      div.style.display = 'none';
-    }
-  });
-  const nums = new Set();
-  while (nums.size !== order.length * 10) {
-    nums.add(Math.floor(Math.random() * 108));
-  }
-  let randomCardIndexes = Array.from(nums);
-  let playerAndNums = [];
-  order.forEach((player) => {
-    let playersCardNums = randomCardIndexes.splice(-10);
-    playerAndNums.push({ id: player.id, nums: playersCardNums });
-  });
-  fetch(`${GAMES_URL}/${originalData.id}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({
-      cardNums: playerAndNums,
-      game: originalData.id,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => fetchCards(data));
 }
 
 function fetchCards(obj) {

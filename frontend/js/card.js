@@ -6,6 +6,6 @@ class Card {
       );
     }
     API.get(`/decks/${data.deck['id']}`).then((deck) => Deck.renderDeck(deck));
-    Game.renderGameInfo(data);
+    Game.currentGame.renderGameInfo(data);
   }
 }

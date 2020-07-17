@@ -2,9 +2,9 @@ class Game {
   constructor(playerOrder) {
     this.playerOrder = playerOrder;
   }
-  static all = [];
+  static currentGame;
   save() {
-    Game.all.push(this);
+    Game.currentGame = this;
   }
   createGame(params) {
     API.post('/games', params).then((data) =>
@@ -158,7 +158,7 @@ class Game {
     let r = new Round();
     setTimeout(r.startRound, 7000, order, data);
   }
-  static renderGameInfo(obj) {
+  renderGameInfo(obj) {
     const scoresList = document.querySelector('.scores');
     const roundInfo = document.querySelector('.roundInfo');
     roundInfo.innerText = 'Round: 1';

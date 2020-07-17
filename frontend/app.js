@@ -94,27 +94,6 @@ function getDragAfterElement(container, x) {
   ).element;
 }
 
-function fetchCards(obj) {
-  for (let i = 0; i < obj.hands.length; i += 3) {
-    fetch(`${BASE_URL}/hands/${obj.hands[i]['id']}`, {
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((hands) => renderHands(hands));
-  }
-
-  fetch(`${BASE_URL}/decks/${obj.deck['id']}`, {
-    headers: {
-      'Content-type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((deck) => renderDeck(deck));
-  renderGameInfo(obj);
-}
-
 function renderHands(obj) {
   let handDiv = document.getElementById(`player${obj.player_id}Hand`);
   obj.cards.forEach((c) => {

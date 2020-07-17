@@ -32,6 +32,6 @@ class Round {
     };
     let r = new Round(order[0]);
     r.save();
-    API.patch(`/games/${data.id}`, body).then((data) => fetchCards(data));
+    API.patch(`/games/${data.id}`, body).then((data) => Card.fetchCards(data));
   }
 }

@@ -87,6 +87,14 @@ class Game {
       }
     }
     let sortedPlayOrder = playOrder.sort((a, b) => b.number - a.number);
+    sortedPlayOrder.forEach((player) => {
+      const p = new Player();
+      p.id = player.id;
+      p.name = player.name;
+      p.pickedUp = false;
+      p.placedSet = false;
+      p.save();
+    });
     this.playerOrder = sortedPlayOrder;
     this.save();
     this.showPlayerOrder(sortedPlayOrder, data);

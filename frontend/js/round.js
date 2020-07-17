@@ -10,7 +10,7 @@ class Round {
   }
   startRound(order, data) {
     orderReveal.style.display = 'none';
-    playersScreen.style.display = 'flex';
+    // playersScreen.style.display = 'flex';
     const playerAreas = document.querySelectorAll('.playerScreen');
     playerAreas.forEach(function (area) {
       if (area.id !== `player${order[0]['id'].toString()}`) {

@@ -159,26 +159,18 @@ class Game {
     let r = new Round();
     setTimeout(r.startRound, 7000, order, data);
   }
-  renderGameInfo(obj) {
+  renderGameInfo() {
     const scoresList = document.querySelector('.scores');
     const roundInfo = document.querySelector('.roundInfo');
-    roundInfo.innerText = 'Round: 1';
     const currentTurnInfo = document.querySelector('.currentTurn');
-    for (let i = 0; i < obj.players.length; i += 3) {
+    roundInfo.innerText = `Round ${Round.currentRound.number}`;
+    for (let i = 0; i < Player.all.length; i++) {
       let listItem = document.createElement('li');
-      listItem.innerText = `${obj.players[i]['name']} - 0`;
+      listItem.innerText = `${Player.all[i]['name']} - ${Player.all[i]['score']}`;
       scoresList.appendChild(listItem);
     }
-    const playerScreens = document.querySelectorAll('.playerScreen');
-    playerScreens.forEach((screen) => {
-      if (screen.style.display !== 'none') {
-        const id = screen.id;
-        for (let i = 0; i < obj.players.length; i += 3) {
-          if (`player${obj.players[i]['id']}` === id) {
-            currentTurnInfo.innerText = `Current Player: ${obj.players[i]['name']}`;
-          }
-        }
-      }
-    });
+    currentTurnInfo.innerText = `Current Player: ${Round.currentRound.currentPlayer.name}`;
+    orderReveal.style.display = 'none';
+    playersScreen.style.display = 'flex';
   }
 }

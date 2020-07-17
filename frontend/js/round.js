@@ -1,8 +1,10 @@
 class Round {
-  constructor(currentPlayer) {
+  constructor(currentPlayer, number) {
     this.currentPlayer = currentPlayer;
+    this.number = number;
   }
   static all = [];
+  static currentRound;
   save() {
     Round.all.push(this);
   }
@@ -30,8 +32,9 @@ class Round {
       cardNums: playerAndNums,
       game: data.id,
     };
-    let r = new Round(order[0]);
+    let r = new Round(order[0], 1);
     r.save();
+    Round.currentRound = r;
     API.patch(`/games/${data.id}`, body).then((data) => Card.fetchCards(data));
   }
 }

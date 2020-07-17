@@ -93,6 +93,7 @@ class Game {
       p.name = player.name;
       p.pickedUp = false;
       p.placedSet = false;
+      p.score = 0;
       p.save();
     });
     this.playerOrder = sortedPlayOrder;

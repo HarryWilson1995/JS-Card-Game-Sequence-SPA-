@@ -40,10 +40,7 @@ newGameForm.addEventListener('submit', (e) => {
 // Drop zone drag over event
 dropZone.addEventListener('dragover', (e) => {
   e.preventDefault();
-  const draggable = document.querySelector('.dragging');
-  draggable.classList.remove('handCard');
-  dropZone.appendChild(draggable);
-  console.log(game);
+  Dropzone.discard();
 });
 
 // Draw Card event

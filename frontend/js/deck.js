@@ -19,4 +19,7 @@ class Deck {
       deck.appendChild(card);
     });
   }
+  static drawCard() {
+    // check to see if they have already pickedup, then append and change their pickup value
+  }
 }

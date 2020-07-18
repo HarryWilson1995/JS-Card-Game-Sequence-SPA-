@@ -96,8 +96,8 @@ class Game {
       p.score = 0;
       p.save();
     });
-    this.playerOrder = sortedPlayOrder;
     this.save();
+    Game.currentGame.playerOrder = Player.all;
     this.showPlayerOrder(sortedPlayOrder, data);
   }
   createPlayerFields(arr) {

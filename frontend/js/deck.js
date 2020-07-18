@@ -20,6 +20,27 @@ class Deck {
     });
   }
   static drawCard() {
-    // check to see if they have already pickedup, then append and change their pickup value
+    if (Round.currentRound.currentPlayer.pickedUp === false) {
+      const screen = document.getElementById(
+        `player${Round.currentRound.currentPlayer.id}Hand`
+      );
+      const drawnCard = deck.children[1];
+      drawnCard.classList.add('handCard');
+      drawnCard.classList.remove('deckCard');
+      drawnCard.onmouseenter = function (e) {
+        e.target.style.marginBottom = '5rem';
+      };
+      drawnCard.onmouseleave = function (e) {
+        e.target.style.marginBottom = '0';
+      };
+      drawnCard.addEventListener('dragstart', () => {
+        drawnCard.classList.add('dragging');
+      });
+      drawnCard.addEventListener('dragend', () => {
+        drawnCard.classList.remove('dragging');
+      });
+      screen.appendChild(drawnCard);
+      Round.currentRound.currentPlayer.pickedUp = true;
+    }
   }
 }

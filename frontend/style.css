@@ -280,3 +280,17 @@ body {
 .deckCard {
   position: absolute;
 }
+
+.betweenTurns {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 35vh;
+  background: black;
+  border: 1px solid black;
+}
+
+.betweenTurnsMessage {
+  color: white;
+}

@@ -36,6 +36,24 @@ class Round {
     API.patch(`/games/${data.id}`, body).then((data) => Card.fetchCards(data));
   }
   endTurn() {
-    console.log('round is over');
+    let nextPlayerIndex = 0;
+    const currentPlayerIndex = Game.currentGame.playerOrder.indexOf(
+      Round.currentRound.currentPlayer
+    );
+    if (currentPlayerIndex < Game.currentGame.playerOrder.length - 1) {
+      nextPlayerIndex = currentPlayerIndex + 1;
+    }
+    console.log(nextPlayerIndex);
+    const screen = document.getElementById(
+      `player${Round.currentRound.currentPlayer.id}`
+    );
+    screen.style.display = 'none';
+    Round.currentRound.currentPlayer =
+      Game.currentGame.playerOrder[nextPlayerIndex];
+    const betweenTurns = document.querySelector('.betweenTurns');
+    betweenTurns.style.display = 'flex';
+    const betweenTurnsMessage = document.querySelector('.betweenTurnsMessage');
+    betweenTurnsMessage.textContent = `${Round.currentRound.currentPlayer.name}'s Turn Will Begin Shortly`;
+    setTimeout(Game.currentGame.turnInfoUpdate, 5000);
   }
 }

@@ -121,6 +121,12 @@ class Game {
       playerScreen.appendChild(playerHand);
       playersScreen.appendChild(playerScreen);
     }
+    let betweenTurns = document.createElement('div');
+    betweenTurns.classList.add('betweenTurns');
+    let betweenTurnsMessage = document.createElement('h1');
+    betweenTurnsMessage.classList.add('betweenTurnsMessage');
+    betweenTurns.appendChild(betweenTurnsMessage);
+    playersScreen.appendChild(betweenTurns);
   }
   showPlayerOrder(order, data) {
     startGameForm.style.display = 'none';
@@ -172,5 +178,15 @@ class Game {
     currentTurnInfo.innerText = `Current Player: ${Round.currentRound.currentPlayer.name}`;
     orderReveal.style.display = 'none';
     playersScreen.style.display = 'flex';
+  }
+  turnInfoUpdate() {
+    const currentTurnInfo = document.querySelector('.currentTurn');
+    currentTurnInfo.innerText = `Current Player: ${Round.currentRound.currentPlayer.name}`;
+    const betweenTurns = document.querySelector('.betweenTurns');
+    betweenTurns.style.display = 'none';
+    const currentPlayerDiv = document.getElementById(
+      `player${Round.currentRound.currentPlayer.id}`
+    );
+    currentPlayerDiv.style.display = 'flex';
   }
 }

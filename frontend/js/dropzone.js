@@ -4,6 +4,7 @@ class Dropzone {
       const draggable = document.querySelector('.dragging');
       draggable.classList.remove('handCard');
       dropZone.appendChild(draggable);
+      Round.currentRound.currentPlayer.pickedUp = false;
       Round.currentRound.endTurn();
     }
   }

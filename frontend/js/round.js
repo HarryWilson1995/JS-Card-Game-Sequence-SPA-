@@ -43,7 +43,6 @@ class Round {
     if (currentPlayerIndex < Game.currentGame.playerOrder.length - 1) {
       nextPlayerIndex = currentPlayerIndex + 1;
     }
-    console.log(nextPlayerIndex);
     const screen = document.getElementById(
       `player${Round.currentRound.currentPlayer.id}`
     );

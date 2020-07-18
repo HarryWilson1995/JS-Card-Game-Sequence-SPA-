@@ -21,6 +21,11 @@ dropZone.addEventListener('dragover', (e) => {
   Dropzone.discard();
 });
 
+dropZone.addEventListener('click', (e) => {
+  e.preventDefault();
+  Dropzone.drawFromDiscard();
+});
+
 deck.addEventListener('click', () => {
   Deck.drawCard();
 });

@@ -23,7 +23,7 @@ class Round {
     let randomCardIndexes = Array.from(nums);
     let playerAndNums = [];
     order.forEach((player) => {
-      let playersCardNums = randomCardIndexes.splice(-10);
+      let playersCardNums = randomCardIndexes.splice(-9);
       playerAndNums.push({ id: player.id, nums: playersCardNums });
     });
     let body = {

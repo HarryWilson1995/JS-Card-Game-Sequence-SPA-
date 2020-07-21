@@ -321,9 +321,10 @@ body {
 }
 
 .newGameBtn {
-  padding: 1rem;
+  padding: 2rem;
   background-color: black;
   color: white;
+  font-size: 2rem;
 }
 
 /* Rules modal  */

@@ -108,16 +108,20 @@ class Game {
       const playerHand = document.createElement('div');
       playerHand.classList.add('playersCards');
       playerHand.id = `player${arr[i].id}Hand`;
-      playerHand.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        const afterElement = Hand.getDragAfterElement(playerHand, e.clientX);
-        const draggable = document.querySelector('.dragging');
-        if (afterElement == null) {
-          playerHand.appendChild(draggable);
-        } else {
-          playerHand.insertBefore(draggable, afterElement);
-        }
+      Sortable.create(playerHand, {
+        multiDrag: true,
+        selectedClass: 'sortable-selected',
       });
+      // playerHand.addEventListener('dragover', (e) => {
+      //   e.preventDefault();
+      //   const afterElement = Hand.getDragAfterElement(playerHand, e.clientX);
+      //   const draggable = document.querySelector('.dragging');
+      //   if (afterElement == null) {
+      //     playerHand.appendChild(draggable);
+      //   } else {
+      //     playerHand.insertBefore(draggable, afterElement);
+      //   }
+      // });
       playerScreen.appendChild(playerHand);
       playersScreen.appendChild(playerScreen);
     }

@@ -24,23 +24,4 @@ class Hand {
       handDiv.appendChild(card);
     });
   }
-  static getDragAfterElement(container, x) {
-    const draggableElements = [
-      ...container.querySelectorAll('.handCard:not(.dragging)'),
-    ];
-    return draggableElements.reduce(
-      (closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = x - box.left - box.width / 2;
-        if (offset < 0 && offset > closest.offset) {
-          return { offset: offset, element: child };
-        } else {
-          return closest;
-        }
-      },
-      {
-        offset: Number.NEGATIVE_INFINITY,
-      }
-    ).element;
-  }
 }

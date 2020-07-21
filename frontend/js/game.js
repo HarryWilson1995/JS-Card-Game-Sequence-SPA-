@@ -109,19 +109,41 @@ class Game {
       playerHand.classList.add('playersCards');
       playerHand.id = `player${arr[i].id}Hand`;
       Sortable.create(playerHand, {
+        group: 'shared',
         multiDrag: true,
         selectedClass: 'sortable-selected',
+        onEnd: (e) => {
+          if (
+            e.to === dropZone &&
+            e.clones.length === 0 &&
+            Round.currentRound.currentPlayer.pickedUp === true
+          ) {
+            e.item.classList.remove('handCard');
+            e.item.classList.add('dropZoneCard');
+            dropZone.appendChild(e.item);
+            Dropzone.discard();
+          } else if (
+            e.to === dropZone &&
+            e.clones.length === 0 &&
+            Round.currentRound.currentPlayer.pickedUp === false
+          ) {
+            if (dropZone.lastChild === e.item) {
+              e.from.appendChild(dropZone.lastChild);
+            } else {
+              e.from.appendChild(e.item);
+            }
+          } else if (e.to === dropZone && e.clones.length > 0) {
+            for (let i = 0; i < e.clones.length; i++) {
+              const item = document.getElementById(e.clones[i].id);
+              e.from.appendChild(item);
+            }
+          }
+          // e.item.id; to find card
+          // Can get images by id
+          // can just let append happen using sortable stuff and then fire off functions based on where they land to do the actual checks, if they pass, fire off the static events from classes
+          // if e.to === 'dropzone' then check clones length, if it's one, fire Dropzone.discard which ends turn, if it's not, send them back to hand by checking all id's in clones, selecting, removing from dropzone and appending back to hand which you can find using e.from
+        },
       });
-      // playerHand.addEventListener('dragover', (e) => {
-      //   e.preventDefault();
-      //   const afterElement = Hand.getDragAfterElement(playerHand, e.clientX);
-      //   const draggable = document.querySelector('.dragging');
-      //   if (afterElement == null) {
-      //     playerHand.appendChild(draggable);
-      //   } else {
-      //     playerHand.insertBefore(draggable, afterElement);
-      //   }
-      // });
       playerScreen.appendChild(playerHand);
       playersScreen.appendChild(playerScreen);
     }

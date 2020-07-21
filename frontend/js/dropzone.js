@@ -1,11 +1,6 @@
 class Dropzone {
   static discard() {
     if (Round.currentRound.currentPlayer.pickedUp === true) {
-      const draggable = document.querySelector('.dragging');
-      draggable.classList.remove('handCard');
-      draggable.classList.add('dropZoneCard');
-      dropZone.appendChild(draggable);
-      draggable.draggable = false;
       Round.currentRound.currentPlayer.pickedUp = false;
       Round.currentRound.endTurn();
     }
@@ -28,12 +23,6 @@ class Dropzone {
       drawnCard.onmouseleave = function (e) {
         e.target.style.marginBottom = '0';
       };
-      drawnCard.addEventListener('dragstart', () => {
-        drawnCard.classList.add('dragging');
-      });
-      drawnCard.addEventListener('dragend', () => {
-        drawnCard.classList.remove('dragging');
-      });
       screen.appendChild(drawnCard);
       Round.currentRound.currentPlayer.pickedUp = true;
     }

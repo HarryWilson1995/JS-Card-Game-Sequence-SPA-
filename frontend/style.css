@@ -303,3 +303,18 @@ body {
 .sortable-selected {
   border: 5px solid red;
 }
+
+/* Winner reveal */
+.winnerReveal {
+  width: 100vw;
+  height: 100vw;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.winnerReveal h1 {
+  color: white;
+}

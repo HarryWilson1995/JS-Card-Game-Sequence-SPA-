@@ -2,8 +2,17 @@ class Dropzone {
   static discard() {
     if (Round.currentRound.currentPlayer.pickedUp === true) {
       Round.currentRound.currentPlayer.pickedUp = false;
-      // Check for win!
-      Round.currentRound.endTurn();
+      const playersHand = document.getElementById(
+        `player${Round.currentRound.currentPlayer.id}Hand`
+      );
+      if (playersHand.childElementCount === 0) {
+        const winnerMessage = document.querySelector('.winner');
+        playersScreen.style.display = 'none';
+        winner.style.display = 'flex';
+        winnerMessage.textContent = `${Round.currentRound.currentPlayer.name} has won the game!`;
+      } else {
+        Round.currentRound.endTurn();
+      }
     }
   }
   static drawFromDiscard() {

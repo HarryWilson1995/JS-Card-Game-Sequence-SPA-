@@ -10,6 +10,8 @@ const deckArea = document.querySelector('.deckArea');
 const sequenceDropArea = document.querySelector('.sequenceDropArea');
 const dropZone = document.querySelector('.dropZone');
 const deck = document.querySelector('.deck');
+const winner = document.querySelector('.winnerReveal');
+const newGameBtn = document.querySelector('.newGameBtn');
 
 new Sortable(dropZone, {
   group: {
@@ -43,4 +45,8 @@ dropZone.addEventListener('click', (e) => {
 
 deck.addEventListener('click', () => {
   Deck.drawCard();
+});
+
+newGameBtn.addEventListener('click', () => {
+  document.location.reload();
 });

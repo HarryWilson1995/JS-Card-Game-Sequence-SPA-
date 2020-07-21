@@ -137,11 +137,18 @@ class Game {
               const item = document.getElementById(e.clones[i].id);
               e.from.appendChild(item);
             }
-          } else if (e.to === sequenceDropArea) {
+          } else if (e.to === sequenceDropArea && e.clones.length === 3) {
             e.item.onmouseenter = '';
             console.log('validations time');
             // check for length, check for consecutive, check for same num, only accept threes, send back if doesn't meet all those, must have picked up.
             // could pass these to a Round method and pass round number? Makes game easier to expand in future
+            // if it is valid, create new Sortable in div appended to dropZone and transfer everything
+          } else if (e.to === sequenceDropArea && e.clones.length !== 3) {
+            e.clones.forEach((clone) => {
+              const item = document.getElementById(clone.id);
+              e.from.appendChild(item);
+            });
+            e.from.appendChild(e.item);
           }
         },
       });

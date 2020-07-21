@@ -15,6 +15,33 @@ class Deck {
       card.width = '157';
       card.id = c.id;
       card.src = `./images/${c.value}${c.suit}.png`;
+      if (c.value == '2' && (c.suit == 'S' || c.suit == 'C')) {
+        card.dataset.number = 'joker';
+      } else if (
+        c.value != 'joker' &&
+        c.value != 'J' &&
+        c.value != 'Q' &&
+        c.value != 'K' &&
+        c.value != 'A'
+      ) {
+        card.dataset.suit = c.suit;
+        card.dataset.number = c.value;
+      } else if (c.value == 'J') {
+        card.dataset.suit = c.suit;
+        card.dataset.number = 11;
+      } else if (c.value == 'Q') {
+        card.dataset.suit = c.suit;
+        card.dataset.number = 12;
+      } else if (c.value == 'K') {
+        card.dataset.suit = c.suit;
+        card.dataset.number = 13;
+      } else if (c.value == 'A') {
+        card.dataset.suit = c.suit;
+        card.dataset.number = 14;
+        card.dataset.secondNumber = 1;
+      } else {
+        card.dataset.number = 'joker';
+      }
       card.classList.add('deckCard');
       deck.appendChild(card);
     });

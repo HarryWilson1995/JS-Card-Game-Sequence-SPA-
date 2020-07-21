@@ -138,6 +138,10 @@ class Game {
               e.from.appendChild(item);
             }
           } else if (e.to === sequenceDropArea && e.clones.length === 3) {
+            e.clones.forEach((clone) => {
+              // grab actual item
+              console.log(clone);
+            });
             e.item.onmouseenter = '';
             console.log('validations time');
             // check for length, check for consecutive, check for same num, only accept threes, send back if doesn't meet all those, must have picked up.

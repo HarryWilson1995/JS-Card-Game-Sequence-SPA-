@@ -12,6 +12,9 @@ const dropZone = document.querySelector('.dropZone');
 const deck = document.querySelector('.deck');
 const winner = document.querySelector('.winnerReveal');
 const newGameBtn = document.querySelector('.newGameBtn');
+const rulesBtn = document.querySelector('.gameRules');
+const rulesModal = document.querySelector('.rulesModal');
+const closeRulesBtn = document.querySelector('.closeRulesBtn');
 
 new Sortable(dropZone, {
   group: {
@@ -49,4 +52,14 @@ deck.addEventListener('click', () => {
 
 newGameBtn.addEventListener('click', () => {
   document.location.reload();
+});
+
+rulesBtn.addEventListener('click', () => {
+  playersScreen.style.display = 'none';
+  rulesModal.style.display = 'flex';
+});
+
+closeRulesBtn.addEventListener('click', () => {
+  rulesModal.style.display = 'none';
+  playersScreen.style.display = 'flex';
 });

@@ -7,9 +7,7 @@ class Hand {
       card.width = '157';
       card.id = c.id;
       card.src = `./images/${c.value}${c.suit}.png`;
-      if (c.value == '2' && (c.suit == 'S' || c.suit == 'C')) {
-        card.dataset.number = 'joker';
-      } else if (
+      if (
         c.value != 'joker' &&
         c.value != 'J' &&
         c.value != 'Q' &&

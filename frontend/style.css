@@ -355,6 +355,10 @@ body {
   padding: 2rem;
 }
 
+.rulesInfo ol {
+  padding: 1rem;
+}
+
 .rulesInfo span {
   position: absolute;
   top: 5%;

@@ -21,15 +21,20 @@ new Sortable(dropZone, {
   sort: false,
 });
 
+new Sortable(sequenceDropArea, {
+  group: {
+    name: 'shared',
+    pull: false,
+    put: true,
+    sort: false,
+  },
+  sort: false,
+});
+
 newGameForm.addEventListener('submit', (e) => {
   e.preventDefault();
   Form.initializeGame();
 });
-
-// dropZone.addEventListener('dragover', (e) => {
-//   e.preventDefault();
-//   Dropzone.discard();
-// });
 
 dropZone.addEventListener('click', (e) => {
   e.preventDefault();
@@ -38,10 +43,4 @@ dropZone.addEventListener('click', (e) => {
 
 deck.addEventListener('click', () => {
   Deck.drawCard();
-});
-
-sequenceDropArea.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  // add similar method to discard except check length is three
-  Sequence.discard();
 });

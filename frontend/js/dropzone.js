@@ -2,6 +2,7 @@ class Dropzone {
   static discard() {
     if (Round.currentRound.currentPlayer.pickedUp === true) {
       Round.currentRound.currentPlayer.pickedUp = false;
+      // Check for win!
       Round.currentRound.endTurn();
     }
   }

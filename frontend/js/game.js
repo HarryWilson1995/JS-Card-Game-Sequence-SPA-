@@ -137,11 +137,15 @@ class Game {
               const item = document.getElementById(e.clones[i].id);
               e.from.appendChild(item);
             }
+          } else if (e.to === sequenceDropArea) {
+            e.item.onmouseenter = '';
+            console.log('validations time');
           }
           // e.item.id; to find card
           // Can get images by id
           // can just let append happen using sortable stuff and then fire off functions based on where they land to do the actual checks, if they pass, fire off the static events from classes
           // if e.to === 'dropzone' then check clones length, if it's one, fire Dropzone.discard which ends turn, if it's not, send them back to hand by checking all id's in clones, selecting, removing from dropzone and appending back to hand which you can find using e.from
+          // Sequence.discard();
         },
       });
       playerScreen.appendChild(playerHand);

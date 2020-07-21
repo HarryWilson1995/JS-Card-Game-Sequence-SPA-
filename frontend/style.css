@@ -306,15 +306,22 @@ body {
 
 /* Winner reveal */
 .winnerReveal {
-  width: 100vw;
-  height: 100vw;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: #45b08c;
+  margin-top: 15%;
 }
 
 .winnerReveal h1 {
+  color: black;
+  font-size: 4rem;
+  padding: 2rem;
+}
+
+.newGameBtn {
+  padding: 1rem;
+  background-color: black;
   color: white;
 }

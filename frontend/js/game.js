@@ -145,6 +145,8 @@ class Game {
               let div = document.createElement('div');
               e.clones.forEach((clone) => {
                 const item = document.getElementById(clone.id);
+                item.height = '120';
+                item.width = '78.5';
                 item.onmouseenter = '';
                 div.appendChild(item);
               });

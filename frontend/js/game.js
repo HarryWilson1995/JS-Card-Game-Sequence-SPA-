@@ -1,6 +1,7 @@
 class Game {
-  constructor(playerOrder) {
+  constructor(playerOrder, id) {
     this.playerOrder = playerOrder;
+    this.id = id;
   }
   static currentGame;
   save() {
@@ -96,6 +97,7 @@ class Game {
       p.score = 0;
       p.save();
     });
+    this.id = data.id;
     this.save();
     Game.currentGame.playerOrder = Player.all;
     this.showPlayerOrder(sortedPlayOrder, data);

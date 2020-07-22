@@ -255,7 +255,7 @@ class Game {
         (a, b) => b.score - a.score
       );
       let r = new Round();
-      setTimeout(r.startRound, 7000, sortedPlayOrder, data);
+      setTimeout(r.startRound, 4000, sortedPlayOrder, data);
     });
   }
 }

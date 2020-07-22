@@ -16,6 +16,7 @@ const rulesBtn = document.querySelector('.gameRules');
 const rulesModal = document.querySelector('.rulesModal');
 const closeRulesBtn = document.querySelector('.closeRulesBtn');
 const playAgainBtn = document.querySelector('.playAgainBtn');
+const standings = document.querySelector('.standings');
 
 new Sortable(dropZone, {
   group: {

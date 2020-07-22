@@ -11,6 +11,15 @@ class Dropzone {
         winner.style.display = 'flex';
         winnerMessage.textContent = `${Round.currentRound.currentPlayer.name} has won the game!`;
         Round.currentRound.currentPlayer.score += 1;
+        let standingsOrder = Player.all.sort((a, b) => b.score - a.score);
+        while (standings.firstChild) {
+          standings.removeChild(standings.firstChild);
+        }
+        standingsOrder.forEach((player) => {
+          let item = document.createElement('li');
+          item.textContent = `${player.name} - ${player.score}`;
+          standings.appendChild(item);
+        });
       } else {
         Round.currentRound.endTurn();
       }

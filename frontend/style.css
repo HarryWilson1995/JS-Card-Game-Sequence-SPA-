@@ -311,13 +311,17 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #45b08c;
-  margin-top: 15%;
+  margin-top: 8%;
 }
 
 .winnerReveal h1 {
   color: black;
   font-size: 4rem;
   padding: 2rem;
+}
+
+.winnerReveal h2 {
+  padding: 1rem;
 }
 
 .newGameBtn {
@@ -374,4 +378,9 @@ body {
   right: 5%;
   font-size: 4rem;
   cursor: pointer;
+}
+
+/* final page standings */
+.standings {
+  font-size: 2rem;
 }

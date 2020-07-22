@@ -38,6 +38,12 @@ class GamesController < ApplicationController
   end
 
   def finished 
+    player = Player.find(params[:currentPlayer])
+    player.rounds.first.score = params[:score]
+    player.rounds.first.save
+    game = Game.find(params[:id])
+    deck = game.deck
+    # Make all cards belong to deck again
     binding.pry
   end
 end

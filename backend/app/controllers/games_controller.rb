@@ -36,4 +36,8 @@ class GamesController < ApplicationController
 
     render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile, :hands]
   end
+
+  def finished 
+    binding.pry
+  end
 end

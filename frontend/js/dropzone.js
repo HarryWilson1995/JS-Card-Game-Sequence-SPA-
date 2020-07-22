@@ -10,6 +10,10 @@ class Dropzone {
         playersScreen.style.display = 'none';
         winner.style.display = 'flex';
         winnerMessage.textContent = `${Round.currentRound.currentPlayer.name} has won the game!`;
+        let data = {
+          winner: Round.currentRound.currentPlayer.name,
+        };
+        API.patch(`/gameover/${Game.currentGame.id}`, data);
       } else {
         Round.currentRound.endTurn();
       }

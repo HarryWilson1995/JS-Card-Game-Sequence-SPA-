@@ -15,6 +15,7 @@ const newGameBtn = document.querySelector('.newGameBtn');
 const rulesBtn = document.querySelector('.gameRules');
 const rulesModal = document.querySelector('.rulesModal');
 const closeRulesBtn = document.querySelector('.closeRulesBtn');
+const playAgainBtn = document.querySelector('.playAgainBtn');
 
 new Sortable(dropZone, {
   group: {
@@ -62,4 +63,8 @@ rulesBtn.addEventListener('click', () => {
 closeRulesBtn.addEventListener('click', () => {
   rulesModal.style.display = 'none';
   playersScreen.style.display = 'flex';
+});
+
+playAgainBtn.addEventListener('click', () => {
+  console.log('use data from patch to do something');
 });

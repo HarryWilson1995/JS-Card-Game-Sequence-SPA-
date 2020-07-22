@@ -1,5 +1,13 @@
 class Deck {
   static renderDeck(obj) {
+    let deck = document.querySelector('.deck');
+    let topCard = document.createElement('img');
+    topCard.height = '240';
+    topCard.width = '157';
+    topCard.classList.add('deckCardTop');
+    topCard.draggable = false;
+    topCard.src = './images/blue_back.png';
+    deck.appendChild(topCard);
     for (let i = 0; i < 1000; i++) {
       let location1 = Math.floor(Math.random() * obj.cards.length);
       let location2 = Math.floor(Math.random() * obj.cards.length);
@@ -8,7 +16,6 @@ class Deck {
       obj.cards[location1] = obj.cards[location2];
       obj.cards[location2] = tmp;
     }
-    let deck = document.querySelector('.deck');
     obj.cards.forEach((c) => {
       let card = document.createElement('img');
       card.height = '240';

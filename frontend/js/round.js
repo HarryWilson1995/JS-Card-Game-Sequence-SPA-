@@ -9,15 +9,35 @@ class Round {
     Round.all.push(this);
   }
   startRound(order, data) {
+    if (Round.currentRound != undefined) {
+      while (deck.firstChild) {
+        deck.removeChild(deck.firstChild);
+      }
+      while (dropZone.firstChild) {
+        dropZone.removeChild(dropZone.firstChild);
+      }
+      while (sequenceDropArea.firstChild) {
+        sequenceDropArea.removeChild(sequenceDropArea.firstChild);
+      }
+      winner.style.display = 'none';
+    }
     const playerAreas = document.querySelectorAll('.playerScreen');
     playerAreas.forEach(function (area) {
+      if (Round.currentRound != undefined) {
+        while (area.firstChild.firstChild) {
+          area.firstChild.removeChild(area.firstChild.firstChild);
+        }
+      }
       if (area.id !== `player${order[0]['id'].toString()}`) {
         let div = document.getElementById(`${area.id}`);
         div.style.display = 'none';
+      } else {
+        let div = document.getElementById(`${area.id}`);
+        div.style.display = 'flex';
       }
     });
     const nums = new Set();
-    while (nums.size !== order.length * 10) {
+    while (nums.size !== order.length * 9) {
       nums.add(Math.floor(Math.random() * 108));
     }
     let randomCardIndexes = Array.from(nums);

@@ -49,7 +49,6 @@ class GamesController < ApplicationController
       card.locationable = deck
       card.save
     end
-    binding.pry
     render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile, :hands]
   end
 end

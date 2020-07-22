@@ -88,15 +88,17 @@ class Game {
       }
     }
     let sortedPlayOrder = playOrder.sort((a, b) => b.number - a.number);
-    sortedPlayOrder.forEach((player) => {
-      const p = new Player();
-      p.id = player.id;
-      p.name = player.name;
-      p.pickedUp = false;
-      p.placedSet = false;
-      p.score = 0;
-      p.save();
-    });
+    if ((Player.all = [])) {
+      sortedPlayOrder.forEach((player) => {
+        const p = new Player();
+        p.id = player.id;
+        p.name = player.name;
+        p.pickedUp = false;
+        p.placedSet = false;
+        p.score = 0;
+        p.save();
+      });
+    }
     this.id = data.id;
     this.save();
     Game.currentGame.playerOrder = Player.all;
@@ -218,6 +220,9 @@ class Game {
   }
   renderGameInfo() {
     const scoresList = document.querySelector('.scores');
+    while (scoresList.firstChild) {
+      scoresList.removeChild(scoresList.firstChild);
+    }
     const roundInfo = document.querySelector('.roundInfo');
     const currentTurnInfo = document.querySelector('.currentTurn');
     roundInfo.innerText = `Round ${Round.currentRound.number}`;
@@ -245,8 +250,13 @@ class Game {
       currentPlayer: Round.currentRound.currentPlayer.id,
       score: Round.currentRound.currentPlayer.score,
     };
-    API.patch(`/gameover/${Game.currentGame.id}`, data).then((data) =>
-      console.log(data)
-    );
+    API.patch(`/gameover/${Game.currentGame.id}`, data).then((data) => {
+      let sortedPlayOrder = Game.currentGame.playerOrder.sort(
+        (a, b) => b.score - a.score
+      );
+      debugger;
+      let r = new Round();
+      setTimeout(r.startRound, 7000, sortedPlayOrder, data);
+    });
   }
 }

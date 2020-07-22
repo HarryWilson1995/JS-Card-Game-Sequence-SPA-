@@ -254,7 +254,6 @@ class Game {
       let sortedPlayOrder = Game.currentGame.playerOrder.sort(
         (a, b) => b.score - a.score
       );
-      debugger;
       let r = new Round();
       setTimeout(r.startRound, 7000, sortedPlayOrder, data);
     });

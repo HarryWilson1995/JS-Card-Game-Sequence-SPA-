@@ -28,7 +28,6 @@ class Hand {
       } else if (c.value == 'A') {
         card.dataset.suit = c.suit;
         card.dataset.number = 14;
-        card.dataset.secondNumber = 1;
       } else {
         card.dataset.number = 'joker';
       }

@@ -46,6 +46,14 @@ class Deck {
   }
   static drawCard() {
     if (Round.currentRound.currentPlayer.pickedUp === false) {
+      if (deck.childElementCount === 1) {
+        dropZone.childNodes.forEach((card) => {
+          card.classList.remove('dropZoneCard');
+          card.classList.add('deckCard');
+          dropZone.removeChild(card);
+          deck.appendChild(card);
+        });
+      }
       const screen = document.getElementById(
         `player${Round.currentRound.currentPlayer.id}Hand`
       );

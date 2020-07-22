@@ -39,11 +39,17 @@ class GamesController < ApplicationController
 
   def finished 
     player = Player.find(params[:currentPlayer])
-    player.rounds.first.score = params[:score]
-    player.rounds.first.save
+    round = player.rounds.first
+    round.score = params[:score]
+    round.save
     game = Game.find(params[:id])
     deck = game.deck
-    # Make all cards belong to deck again
+    cards = game.cards
+    cards.each do |card|
+      card.locationable = deck
+      card.save
+    end
     binding.pry
+    render json: game, include: [:players, :rounds, :deck, :cards, :discard_pile, :hands]
   end
 end

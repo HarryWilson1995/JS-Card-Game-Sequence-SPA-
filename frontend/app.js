@@ -66,5 +66,5 @@ closeRulesBtn.addEventListener('click', () => {
 });
 
 playAgainBtn.addEventListener('click', () => {
-  console.log('use data from patch to do something');
+  Game.currentGame.playAgain();
 });

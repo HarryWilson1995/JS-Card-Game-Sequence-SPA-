@@ -240,4 +240,13 @@ class Game {
     );
     currentPlayerDiv.style.display = 'flex';
   }
+  playAgain() {
+    let data = {
+      currentPlayer: Round.currentRound.currentPlayer.id,
+      score: Round.currentRound.currentPlayer.score,
+    };
+    API.patch(`/gameover/${Game.currentGame.id}`, data).then((data) =>
+      console.log(data)
+    );
+  }
 }
